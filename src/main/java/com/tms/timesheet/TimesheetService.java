@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.tms.model.Timesheet;
@@ -26,9 +28,10 @@ public class TimesheetService {
 		this.timesheetJpaRepository = timesheetJpaRepository;
 	}
 
-	/*public List<Timesheet> getAllTimesheets(String username){
-		return null;//this.timesheetJpaRepository.findByUsername(username);
-	}*/
+	public List<Timesheet> getAllTimesheets(){
+		Sort sort=Sort.by(Direction.DESC,"loginDate");
+		return this.timesheetJpaRepository.findAll(sort);
+	}
 	
 	public Page<Timesheet> getAllTimesheets(String username,PageRequest pageRequest){
 		return this.timesheetJpaRepository.findByUsername(username,pageRequest);

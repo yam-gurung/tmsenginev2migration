@@ -8,16 +8,13 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -65,7 +62,12 @@ public class JWTWebSecurityConfig {
 		)
 		.sessionManagement(sessionManagement->
 		sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-		.authorizeHttpRequests(auth->auth.anyRequest().authenticated());		
+		.authorizeHttpRequests(auth->auth
+				.requestMatchers(HttpMethod.POST,authenticationPath).permitAll()
+				.requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+				.requestMatchers(HttpMethod.GET,"/").permitAll()
+				.requestMatchers("/h2-console/**").permitAll()
+				.anyRequest().authenticated());		
 		
 		http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 		http.headers(headers->headers.frameOptions(
@@ -75,16 +77,16 @@ public class JWTWebSecurityConfig {
 		return http.build();
 	}
 
-	@Bean
+	/*@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
 		return (web)->web.ignoring()
 				.requestMatchers(HttpMethod.POST,authenticationPath)
-				.requestMatchers(HttpMethod.OPTIONS,"/**")
-				.and()
-				.ignoring()
-				.requestMatchers(HttpMethod.GET,"/")
-				.and()
-				.ignoring()
-				.requestMatchers("/h2-console");
-	}
+				.requestMatchers(HttpMethod.OPTIONS,"/**");
+				//.and()
+				//.ignoring()
+				//.requestMatchers(HttpMethod.GET,"/");
+				//.and()
+				//.ignoring()
+				//.requestMatchers("/h2-console");
+	}*/
 }

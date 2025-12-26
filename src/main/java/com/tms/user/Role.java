@@ -22,7 +22,18 @@ public class Role  implements GrantedAuthority {
     public String getAuthority() {
         return roleName;
     }
-    public Long getId() {
+    
+    public Role(String roleName,String description) {
+    	this.roleName=roleName;
+    	this.description=description;
+    }
+    
+    public Role() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
         return id;
     }
 
