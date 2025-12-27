@@ -94,7 +94,7 @@ public class TimesheetJpaResource {
 	
 	@PostMapping("/jpa/users/{username}/timesheets")
 	public ResponseEntity<Void> createTimesheet(@PathVariable String username,@RequestBody TimesheetDTO timesheetDTO){
-		
+		System.out.println("login Date "+timesheetDTO.getLoginDate());
 		
 		timesheetDTO.setUsername(username);
 		Timesheet createdTimesheet =  this.timesheetService.createNew(timesheetDTO);

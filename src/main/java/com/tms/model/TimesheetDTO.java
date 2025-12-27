@@ -2,6 +2,8 @@ package com.tms.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class TimesheetDTO {
 	private Long id;
 	public TimesheetDTO(Long id, String project, Date loginDate, double loggedHr, String username) {
@@ -13,7 +15,9 @@ public class TimesheetDTO {
 		this.username = username;
 	}
 	private String project;
+	
 	private Date loginDate;
+	
 	private double loggedHr;
 	private String username;
 	public TimesheetDTO() {

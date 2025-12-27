@@ -1,0 +1,198 @@
+2025-12-26T18:16:39.202-05:00  INFO 73538 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Starting Tmsv2migrationApplication using Java 21.0.7 with PID 73538 (/Users/yam/javaproj/tmsenginev2migration/target/classes started by yam in /Users/yam/javaproj/tmsenginev2migration)
+2025-12-26T18:16:39.203-05:00  INFO 73538 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-26T18:16:39.850-05:00  INFO 73538 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-26T18:16:39.902-05:00  INFO 73538 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 5 JPA repository interfaces.
+2025-12-26T18:16:40.295-05:00  INFO 73538 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2025-12-26T18:16:40.303-05:00  INFO 73538 --- [tmsv2migration] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-26T18:16:40.304-05:00  INFO 73538 --- [tmsv2migration] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-26T18:16:40.342-05:00  INFO 73538 --- [tmsv2migration] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1108 ms
+2025-12-26T18:16:40.434-05:00  INFO 73538 --- [tmsv2migration] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2025-12-26T18:16:40.460-05:00  INFO 73538 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2025-12-26T18:16:40.792-05:00  INFO 73538 --- [tmsv2migration] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-26T18:16:40.815-05:00  INFO 73538 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-26T18:16:41.052-05:00  INFO 73538 --- [tmsv2migration] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e1fb22c
+2025-12-26T18:16:41.053-05:00  INFO 73538 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-26T18:16:41.122-05:00  INFO 73538 --- [tmsv2migration] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/timesheetmanagementsystem]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.5
+	Default catalog/schema: timesheetmanagementsystem/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-26T18:16:41.881-05:00  INFO 73538 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-26T18:16:41.947-05:00  INFO 73538 --- [tmsv2migration] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T18:16:42.023-05:00  INFO 73538 --- [tmsv2migration] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-26T18:16:42.248-05:00  WARN 73538 --- [tmsv2migration] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-12-26T18:16:42.674-05:00  INFO 73538 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2025-12-26T18:16:42.683-05:00  INFO 73538 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Started Tmsv2migrationApplication in 3.794 seconds (process running for 9.485)
+2025-12-26T18:21:57.295-05:00  INFO 73538 --- [tmsv2migration] [RMI TCP Connection(7)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-12-26T18:21:57.300-05:00  INFO 73538 --- [tmsv2migration] [RMI TCP Connection(7)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-26T18:21:57.303-05:00  INFO 73538 --- [tmsv2migration] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2025-12-26T18:21:57.310-05:00  INFO 73538 --- [tmsv2migration] [RMI TCP Connection(7)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T18:21:57.312-05:00  INFO 73538 --- [tmsv2migration] [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-26T18:21:57.316-05:00  INFO 73538 --- [tmsv2migration] [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-26T22:06:08.515-05:00  INFO 83244 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Starting Tmsv2migrationApplication using Java 21.0.7 with PID 83244 (/Users/yam/javaproj/tmsenginev2migration/target/classes started by yam in /Users/yam/javaproj/tmsenginev2migration)
+2025-12-26T22:06:08.516-05:00  INFO 83244 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-26T22:06:09.116-05:00  INFO 83244 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-26T22:06:09.168-05:00  INFO 83244 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 5 JPA repository interfaces.
+2025-12-26T22:06:09.573-05:00  INFO 83244 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2025-12-26T22:06:09.581-05:00  INFO 83244 --- [tmsv2migration] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-26T22:06:09.582-05:00  INFO 83244 --- [tmsv2migration] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-26T22:06:09.612-05:00  INFO 83244 --- [tmsv2migration] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1067 ms
+2025-12-26T22:06:09.712-05:00  INFO 83244 --- [tmsv2migration] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2025-12-26T22:06:09.733-05:00  INFO 83244 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2025-12-26T22:06:10.043-05:00  INFO 83244 --- [tmsv2migration] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-26T22:06:10.064-05:00  INFO 83244 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-26T22:06:10.324-05:00  INFO 83244 --- [tmsv2migration] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e61cffd
+2025-12-26T22:06:10.325-05:00  INFO 83244 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-26T22:06:10.378-05:00  INFO 83244 --- [tmsv2migration] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/timesheetmanagementsystem]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.5
+	Default catalog/schema: timesheetmanagementsystem/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-26T22:06:11.134-05:00  INFO 83244 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-26T22:06:11.197-05:00  INFO 83244 --- [tmsv2migration] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T22:06:11.275-05:00  INFO 83244 --- [tmsv2migration] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-26T22:06:11.503-05:00  WARN 83244 --- [tmsv2migration] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-12-26T22:06:11.926-05:00  INFO 83244 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2025-12-26T22:06:11.934-05:00  INFO 83244 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Started Tmsv2migrationApplication in 3.71 seconds (process running for 9.394)
+2025-12-26T22:11:16.745-05:00  INFO 83244 --- [tmsv2migration] [RMI TCP Connection(8)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-12-26T22:11:16.750-05:00  INFO 83244 --- [tmsv2migration] [RMI TCP Connection(8)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-26T22:11:16.753-05:00  INFO 83244 --- [tmsv2migration] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2025-12-26T22:11:16.760-05:00  INFO 83244 --- [tmsv2migration] [RMI TCP Connection(8)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T22:11:16.762-05:00  INFO 83244 --- [tmsv2migration] [RMI TCP Connection(8)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-26T22:11:16.765-05:00  INFO 83244 --- [tmsv2migration] [RMI TCP Connection(8)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-26T22:11:31.103-05:00  INFO 83506 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Starting Tmsv2migrationApplication using Java 21.0.7 with PID 83506 (/Users/yam/javaproj/tmsenginev2migration/target/classes started by yam in /Users/yam/javaproj/tmsenginev2migration)
+2025-12-26T22:11:31.104-05:00  INFO 83506 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-26T22:11:31.719-05:00  INFO 83506 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-26T22:11:31.770-05:00  INFO 83506 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 5 JPA repository interfaces.
+2025-12-26T22:11:32.183-05:00  INFO 83506 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2025-12-26T22:11:32.191-05:00  INFO 83506 --- [tmsv2migration] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-26T22:11:32.191-05:00  INFO 83506 --- [tmsv2migration] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-26T22:11:32.221-05:00  INFO 83506 --- [tmsv2migration] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1086 ms
+2025-12-26T22:11:32.320-05:00  INFO 83506 --- [tmsv2migration] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2025-12-26T22:11:32.341-05:00  INFO 83506 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2025-12-26T22:11:32.646-05:00  INFO 83506 --- [tmsv2migration] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-26T22:11:32.672-05:00  INFO 83506 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-26T22:11:32.915-05:00  INFO 83506 --- [tmsv2migration] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@185a7dd0
+2025-12-26T22:11:32.916-05:00  INFO 83506 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-26T22:11:32.966-05:00  INFO 83506 --- [tmsv2migration] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/timesheetmanagementsystem]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.5
+	Default catalog/schema: timesheetmanagementsystem/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-26T22:11:33.723-05:00  INFO 83506 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-26T22:11:33.781-05:00  INFO 83506 --- [tmsv2migration] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T22:11:33.858-05:00  INFO 83506 --- [tmsv2migration] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-26T22:11:34.071-05:00  WARN 83506 --- [tmsv2migration] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-12-26T22:11:34.542-05:00  INFO 83506 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2025-12-26T22:11:34.552-05:00  INFO 83506 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Started Tmsv2migrationApplication in 3.753 seconds (process running for 9.404)
+2025-12-26T22:12:49.715-05:00  INFO 83506 --- [tmsv2migration] [RMI TCP Connection(6)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-12-26T22:12:49.720-05:00  INFO 83506 --- [tmsv2migration] [RMI TCP Connection(6)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-26T22:12:49.723-05:00  INFO 83506 --- [tmsv2migration] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2025-12-26T22:12:49.729-05:00  INFO 83506 --- [tmsv2migration] [RMI TCP Connection(6)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T22:12:49.731-05:00  INFO 83506 --- [tmsv2migration] [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-26T22:12:49.738-05:00  INFO 83506 --- [tmsv2migration] [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-26T22:13:14.788-05:00  INFO 83590 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Starting Tmsv2migrationApplication using Java 21.0.7 with PID 83590 (/Users/yam/javaproj/tmsenginev2migration/target/classes started by yam in /Users/yam/javaproj/tmsenginev2migration)
+2025-12-26T22:13:14.789-05:00  INFO 83590 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-26T22:13:15.388-05:00  INFO 83590 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-26T22:13:15.437-05:00  INFO 83590 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 5 JPA repository interfaces.
+2025-12-26T22:13:15.843-05:00  INFO 83590 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2025-12-26T22:13:15.850-05:00  INFO 83590 --- [tmsv2migration] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-26T22:13:15.851-05:00  INFO 83590 --- [tmsv2migration] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-26T22:13:15.881-05:00  INFO 83590 --- [tmsv2migration] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1062 ms
+2025-12-26T22:13:15.987-05:00  INFO 83590 --- [tmsv2migration] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2025-12-26T22:13:16.010-05:00  INFO 83590 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2025-12-26T22:13:16.321-05:00  INFO 83590 --- [tmsv2migration] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-26T22:13:16.343-05:00  INFO 83590 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-26T22:13:16.588-05:00  INFO 83590 --- [tmsv2migration] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@516b84d1
+2025-12-26T22:13:16.589-05:00  INFO 83590 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-26T22:13:16.641-05:00  INFO 83590 --- [tmsv2migration] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/timesheetmanagementsystem]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.5
+	Default catalog/schema: timesheetmanagementsystem/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-26T22:13:17.413-05:00  INFO 83590 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-26T22:13:17.466-05:00  INFO 83590 --- [tmsv2migration] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T22:13:17.542-05:00  INFO 83590 --- [tmsv2migration] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-26T22:13:17.768-05:00  WARN 83590 --- [tmsv2migration] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-12-26T22:13:18.211-05:00  INFO 83590 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2025-12-26T22:13:18.221-05:00  INFO 83590 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Started Tmsv2migrationApplication in 3.73 seconds (process running for 9.394)
+2025-12-26T22:36:24.293-05:00  INFO 83590 --- [tmsv2migration] [RMI TCP Connection(26)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-12-26T22:36:24.299-05:00  INFO 83590 --- [tmsv2migration] [RMI TCP Connection(26)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-26T22:36:24.303-05:00  INFO 83590 --- [tmsv2migration] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2025-12-26T22:36:24.309-05:00  INFO 83590 --- [tmsv2migration] [RMI TCP Connection(26)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T22:36:24.312-05:00  INFO 83590 --- [tmsv2migration] [RMI TCP Connection(26)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-26T22:36:24.315-05:00  INFO 83590 --- [tmsv2migration] [RMI TCP Connection(26)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-26T22:37:11.589-05:00  INFO 84743 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Starting Tmsv2migrationApplication using Java 21.0.7 with PID 84743 (/Users/yam/javaproj/tmsenginev2migration/target/classes started by yam in /Users/yam/javaproj/tmsenginev2migration)
+2025-12-26T22:37:11.591-05:00  INFO 84743 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-12-26T22:37:12.202-05:00  INFO 84743 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-26T22:37:12.248-05:00  INFO 84743 --- [tmsv2migration] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 5 JPA repository interfaces.
+2025-12-26T22:37:12.690-05:00  INFO 84743 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2025-12-26T22:37:12.698-05:00  INFO 84743 --- [tmsv2migration] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-26T22:37:12.699-05:00  INFO 84743 --- [tmsv2migration] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-26T22:37:12.732-05:00  INFO 84743 --- [tmsv2migration] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1112 ms
+2025-12-26T22:37:12.839-05:00  INFO 84743 --- [tmsv2migration] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2025-12-26T22:37:12.861-05:00  INFO 84743 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2025-12-26T22:37:13.173-05:00  INFO 84743 --- [tmsv2migration] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-26T22:37:13.194-05:00  INFO 84743 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-26T22:37:13.433-05:00  INFO 84743 --- [tmsv2migration] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3134b261
+2025-12-26T22:37:13.434-05:00  INFO 84743 --- [tmsv2migration] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-26T22:37:13.483-05:00  INFO 84743 --- [tmsv2migration] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/timesheetmanagementsystem]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 9.5
+	Default catalog/schema: timesheetmanagementsystem/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-26T22:37:14.269-05:00  INFO 84743 --- [tmsv2migration] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-26T22:37:14.323-05:00  INFO 84743 --- [tmsv2migration] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T22:37:14.403-05:00  INFO 84743 --- [tmsv2migration] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-12-26T22:37:14.626-05:00  WARN 84743 --- [tmsv2migration] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-12-26T22:37:15.049-05:00  INFO 84743 --- [tmsv2migration] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2025-12-26T22:37:15.063-05:00  INFO 84743 --- [tmsv2migration] [main] com.tms.Tmsv2migrationApplication        : Started Tmsv2migrationApplication in 3.769 seconds (process running for 9.422)
+2025-12-26T22:43:37.285-05:00  INFO 84743 --- [tmsv2migration] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-26T22:43:37.286-05:00  INFO 84743 --- [tmsv2migration] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-26T22:43:37.287-05:00  INFO 84743 --- [tmsv2migration] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-12-26T22:43:37.304-05:00  WARN 84743 --- [tmsv2migration] [http-nio-8080-exec-1] wtTokenAuthorizationOncePerRequestFilter : JWT_TOKEN_DOES_NOT_START_WITH_BEARER_STRING
+2025-12-26T22:43:37.329-05:00  WARN 84743 --- [tmsv2migration] [http-nio-8080-exec-2] wtTokenAuthorizationOncePerRequestFilter : JWT_TOKEN_DOES_NOT_START_WITH_BEARER_STRING
+2025-12-26T22:43:43.612-05:00  WARN 84743 --- [tmsv2migration] [http-nio-8080-exec-4] wtTokenAuthorizationOncePerRequestFilter : JWT_TOKEN_DOES_NOT_START_WITH_BEARER_STRING
+2025-12-26T22:44:01.971-05:00  WARN 84743 --- [tmsv2migration] [http-nio-8080-exec-7] wtTokenAuthorizationOncePerRequestFilter : JWT_TOKEN_DOES_NOT_START_WITH_BEARER_STRING
+2025-12-26T22:44:42.208-05:00  WARN 84743 --- [tmsv2migration] [http-nio-8080-exec-10] wtTokenAuthorizationOncePerRequestFilter : JWT_TOKEN_DOES_NOT_START_WITH_BEARER_STRING
+2025-12-26T22:47:48.710-05:00  INFO 84743 --- [tmsv2migration] [RMI TCP Connection(14)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-12-26T22:47:48.728-05:00  INFO 84743 --- [tmsv2migration] [RMI TCP Connection(14)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-26T22:47:48.732-05:00  INFO 84743 --- [tmsv2migration] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2025-12-26T22:47:48.741-05:00  INFO 84743 --- [tmsv2migration] [RMI TCP Connection(14)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T22:47:48.744-05:00  INFO 84743 --- [tmsv2migration] [RMI TCP Connection(14)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-26T22:47:48.750-05:00  INFO 84743 --- [tmsv2migration] [RMI TCP Connection(14)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
