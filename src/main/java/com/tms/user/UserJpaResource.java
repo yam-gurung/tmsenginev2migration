@@ -1,8 +1,12 @@
 package com.tms.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.web.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,8 +16,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.tms.model.User;
+
+import com.tms.model.SecurityUserResponse;
+import com.tms.service.UserService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -27,9 +34,31 @@ public class UserJpaResource {
 	}
 	
 	@GetMapping("/jpa/users")
-	public List<User> getAllUsers(){
-		return this.userService.getAllUsers();
+	public PagedModel<?> getAllUsers(
+			@RequestParam(name="page",defaultValue="0") int page
+			,@RequestParam(name="size",defaultValue="0") int size){
+		PageRequest pageRequest= PageRequest.of(page, size);
+		Page<SecurityUser> userPageResult = this.userService.getAllUsers(pageRequest);
+		return new PagedModel<>(userPageResult);
 	}
+	
+	/*@GetMapping("/jpa/users")
+	public List<SecurityUserResponse> getAllUsers(
+			@RequestParam(name="page",defaultValue="0") int page
+			,@RequestParam(name="size",defaultValue="0") int size){
+		List<SecurityUserResponse> users=new ArrayList<>();
+		
+		//PageRequest pageRequest=PageRequest.of(page, size);
+		
+		List<SecurityUser> securityUsers=this.userService.getAllUsers();
+		for(SecurityUser securityUser:securityUsers) {
+			users.add(new SecurityUserResponse(
+					securityUser.getUsername(),securityUser.getFirstName(),
+					securityUser.getLastName(),
+					securityUser.getRoles().get(0).getRoleName()));
+		}
+		return  users;
+	}*/
 	
 	/*@GetMapping("/jpa/users/{username}")
 	public User getUser(@PathVariable String username) {
@@ -37,7 +66,7 @@ public class UserJpaResource {
 	}*/
 	
 	@GetMapping("/jpa/users/{id}")
-	public User getUser(@PathVariable Long id) {
+	public SecurityUser getUser(@PathVariable Long id) {
 		return this.userService.getUser(id);
 	}
 	
@@ -49,10 +78,10 @@ public class UserJpaResource {
 	}
 	
 	@PutMapping("/jpa/users/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
-		User updatedUser = this.userService.updateUser(id, user.getUsername(), user.getPassword());
+	public ResponseEntity<SecurityUser> updateUser(@PathVariable Long id, @RequestBody SecurityUser user){
+		SecurityUser updatedUser = this.userService.updateUser(id, user.getUsername(), user.getPassword());
 	
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+		return new ResponseEntity<SecurityUser>(user, HttpStatus.OK);
 	}
 	
 	@PostMapping("/jpa/users")
@@ -60,13 +89,5 @@ public class UserJpaResource {
 		System.out.println(securityUserDto);
 		return this.userService.addUser(securityUserDto);
 	}
-	
-	/*
-	 * created on 19 dec 2025
-	 */ 
-	/*@PostMapping("/jpa/users")
-	public User createUser(@RequestBody User user) {
-		return this.userService.createNew(user);
-	}*/
 
 }

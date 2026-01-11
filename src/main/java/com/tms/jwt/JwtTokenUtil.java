@@ -3,12 +3,15 @@ package com.tms.jwt;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -72,7 +75,19 @@ public class JwtTokenUtil implements Serializable {
 	}
 
 	public String generateToken(UserDetails userDetails) {
+		
+		// 3 Jan 2026
+		// extract roles from authorities and add as custom claim
+		List<String> roles=userDetails.getAuthorities().stream()
+				.map(GrantedAuthority::getAuthority)
+				.collect(Collectors.toList());
+		
 		Map<String, Object> claims = new HashMap<>();
+		
+		// 3 Jan 2026
+		claims.put("roles", roles);
+		
+		
 		return doGenerateToken(claims, userDetails.getUsername());
 	}
 	

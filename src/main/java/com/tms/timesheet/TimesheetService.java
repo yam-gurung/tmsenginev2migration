@@ -45,6 +45,11 @@ public class TimesheetService {
 		return this.timesheetJpaRepository.findByUsername(username, pageable);
 	}
 	
+	public Page<Timesheet> getAllTimesheets(String username,Date startDate
+			,Date endDate,Pageable pageable){
+		return this.timesheetJpaRepository
+				.findByUsernameAndloginDateBetween(username, startDate, endDate, pageable);	}
+	
 	public Timesheet getTimesheet(Long id) {
 		return this.timesheetJpaRepository.findById(id).get();
 	}

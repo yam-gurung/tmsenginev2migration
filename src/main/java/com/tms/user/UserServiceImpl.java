@@ -4,15 +4,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.tms.model.User;
+import com.tms.service.UserService;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
 
-	private UserJpaRepository userJpaRepository;
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -20,26 +21,25 @@ public class UserService {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@Autowired
-	public UserService(UserJpaRepository userJpaRepository) {
-		this.userJpaRepository = userJpaRepository;
+	public Page<SecurityUser> getAllUsers(PageRequest pageRequest) {
+		return this.userRepository.findAll(pageRequest);
+	}
+	
+	public List<SecurityUser> getAllUsers(){
+		return this.userRepository.findAll();
 	}
 
-	public List<User> getAllUsers() {
-		return this.userJpaRepository.findAll();
+	public SecurityUser getUser(String username) {
+		return this.userRepository.findByUsername(username).get();
 	}
 
-	public User getUser(String username) {
-		return this.userJpaRepository.findByUsername(username);
+	public SecurityUser getUser(Long id) {
+		return this.userRepository.findById(id).get();
 	}
 
-	public User getUser(Long id) {
-		return this.userJpaRepository.findById(id).get();
-	}
-
-	public User createNew(User aUser) {
+	/*public User createNew(User aUser) {
 		return this.userJpaRepository.save(aUser);
-	}
+	}*/
 
 	public SecurityUser addUser(SecurityUserDto securityUserDto) {
 		Optional<Role> role = roleRepository.findByRoleName(securityUserDto.getRolename());
@@ -49,16 +49,16 @@ public class UserService {
 				securityUserDto.getLastname()));
 	}
 
-	public User updateUser(Long id, String username, String password) {
-		User updateUser = this.userJpaRepository.findById(id).get();
+	public SecurityUser updateUser(Long id, String username, String password) {
+		SecurityUser updateUser = this.userRepository.findById(id).get();
 		updateUser.setUsername(username);
 		updateUser.setPassword(password);
 
-		return this.userJpaRepository.save(updateUser);
+		return this.userRepository.save(updateUser);
 	}
 
 	public void deleteUser(Long id) {
-		this.userJpaRepository.deleteById(id);
+		this.userRepository.deleteById(id);
 	}
 
 }

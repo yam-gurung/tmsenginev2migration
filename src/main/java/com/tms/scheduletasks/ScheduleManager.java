@@ -5,9 +5,8 @@ import com.tms.model.RoleDTO;
 import com.tms.model.Timesheet;
 import com.tms.roles.RoleService;
 import com.tms.service.ExcelFileService;
+import com.tms.service.FileService;
 import com.tms.timesheet.TimesheetService;
-import com.tms.user.RoleRepository;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class ScheduleManager {
 	
 	private TimesheetService timesheetService;
-	private ExcelFileService excelFileService;
+	private FileService excelFileService;
 	private RoleService roleService;
 	
 	@Value("${report.target.path}")
@@ -35,14 +34,14 @@ public class ScheduleManager {
 	
 	@Autowired
 	public ScheduleManager(TimesheetService timesheetService,
-			ExcelFileService excelFileService,
+			FileService excelFileService,
 			RoleService roleService) {
 		this.timesheetService = timesheetService;
 		this.excelFileService = excelFileService;
 		this.roleService = roleService;
 	}
 	
-	@Scheduled(cron="${timesheet.time.reminder.cron}")// runs every 10 second
+	@Scheduled(cron="${timesheet.time.reminder.cron}")
 	public void sendTimesheetEmailRemainder() {
 		System.out.println("Dear User, its general remainder to fill up your timesheet "
 				+ "for today");
