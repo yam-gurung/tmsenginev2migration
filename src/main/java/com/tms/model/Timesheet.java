@@ -1,22 +1,19 @@
 package com.tms.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PreRemove;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.SQLRestriction;
-
 import com.tms.user.SecurityUser;
+import java.time.LocalTime;
 
 @Entity
 @SQLDelete(sql = "update timesheet set is_deleted=true where id=?")
@@ -32,6 +29,10 @@ public class Timesheet{
 	private String project;
 	
 	private Date loginDate;
+	
+	private LocalTime fromTime;
+	
+	private LocalTime toTime;
 	
 	private double loggedHr;
 	
@@ -57,11 +58,14 @@ public class Timesheet{
 	}
 	
 
-	public Timesheet(String username, String project, Date loginDate, double loggedHr) {
+	public Timesheet(String username, String project, Date loginDate,LocalTime fromTime, 
+			LocalTime toTime,double loggedHr) {
 		super();
 		this.username = username;
 		this.project = project;
 		this.loginDate = loginDate;
+		this.fromTime = fromTime;
+		this.toTime = toTime;
 		this.loggedHr = loggedHr;
 	}
 
@@ -85,6 +89,22 @@ public class Timesheet{
 		return loginDate;
 	}
 
+	public LocalTime getFromTime() {
+		return fromTime;
+	}
+
+	public void setFromTime(LocalTime fromTime) {
+		this.fromTime = fromTime;
+	}
+
+	public LocalTime getToTime() {
+		return toTime;
+	}
+
+	public void setToTime(LocalTime toTime) {
+		this.toTime = toTime;
+	}
+
 	public void setLoginDate(Date loginDate) {
 		this.loginDate = loginDate;
 	}
@@ -96,32 +116,7 @@ public class Timesheet{
 	public void setLoggedHr(double loggedHr) {
 		this.loggedHr = loggedHr;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Timesheet other = (Timesheet) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-
+	
 	public String getUsername() {
 		return username;
 	}
@@ -154,6 +149,31 @@ public class Timesheet{
 
 	public void setCreatedDate(LocalDateTime createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Timesheet other = (Timesheet) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }

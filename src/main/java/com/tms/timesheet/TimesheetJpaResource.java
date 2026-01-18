@@ -1,10 +1,7 @@
 package com.tms.timesheet;
 
 import java.net.URI;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tms.model.Timesheet;
 import com.tms.model.TimesheetDTO;
+import java.text.SimpleDateFormat;
+import com.tms.service.TimesheetService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -40,35 +37,59 @@ public class TimesheetJpaResource {
 		this.timesheetService = timesheetService;
 	}
 
-	/*@GetMapping("/jpa/users/{username}/timesheets")
-	public PagedModel<?> getAllTimesheets(@PathVariable String username,
+	@GetMapping("/jpa/timesheets")
+	public PagedModel<?> getAllEmployeesTimesheetsBySearch(
+			@RequestParam(value = "username", required = false) String username,
+			@RequestParam(value = "startDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+			@RequestParam(value = "endDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
+			@RequestParam(value = "project", required = false) String project,
 			@RequestParam(name = "page", defaultValue = "0") int page,
-			@RequestParam(name = "size", defaultValue = "0") int size) {
-		Sort sort = Sort.by(Direction.DESC, "loginDate");
-		PageRequest pageRequest = PageRequest.of(page, size, sort);
-		Page<Timesheet> pageResult = this.timesheetService.getAllTimesheets(username, pageRequest);
-		return new PagedModel<>(pageResult);
+			@RequestParam(name = "size", defaultValue = "10") int size) {
 
-	}*/
+		// String username = null;
+		String formattedStartDate = null;
+		String formattedEndDate = null;
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		if (startDate != null && endDate != null) {
+			formattedStartDate = formatter.format(startDate);
+			formattedEndDate = formatter.format(endDate);
+
+			System.out.println("formatted start date " + formattedStartDate);
+			System.out.println("formatted end date " + formattedEndDate);
+
+		}
+
+		Sort sort = Sort.by(Direction.DESC, "login_date");
+		PageRequest pageRequest = PageRequest.of(page, size, sort);
+		Page<Timesheet> pageResult = this.timesheetService.getAllEmployeesTimesheets(username, formattedStartDate,
+				formattedEndDate, project, pageRequest);
+
+		return new PagedModel<>(pageResult);
+	}
 
 	@GetMapping("/jpa/users/{username}/timesheets")
-	public PagedModel<?> getAllTimesheetsBySearach(@PathVariable String username,
-			@RequestParam(value="startDate",required=false) @DateTimeFormat(pattern="yyyy-MM-dd")    Date startDate,
-	        @RequestParam(value="endDate",required=false) @DateTimeFormat(pattern="yyyy-MM-dd")   Date endDate,
-			@RequestParam(name="page",defaultValue = "0") int page,
-			@RequestParam(name="size",defaultValue = "0") int size)
-	{
-		System.out.println("start Date: "+startDate);
-		System.out.println("end Date: "+endDate);
-		System.out.println("page: "+page);
-		System.out.println("size: "+size);
-		
-		Sort sort=Sort.by(Direction.DESC, "loginDate");
+	public PagedModel<?> getAllTimesheetsBySearch(@PathVariable(required = false) String username,
+			@RequestParam(value = "startDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+			@RequestParam(value = "endDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
+			@RequestParam(value = "project", required = false) String project,
+			@RequestParam(name = "page", defaultValue = "0") int page,
+			@RequestParam(name = "size", defaultValue = "10") int size) {
+
+		String formattedStartDate = null;
+		String formattedEndDate = null;
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
+		if (startDate != null && endDate != null) {
+			formattedStartDate = formatter.format(startDate);
+			formattedEndDate = formatter.format(endDate);
+		}
+
+		Sort sort = Sort.by(Direction.DESC, "login_date");
 		PageRequest pageRequest = PageRequest.of(page, size, sort);
-		Page<Timesheet> pageResult = this.timesheetService
-				.getAllTimesheets(username,startDate,endDate,pageRequest);
+		Page<Timesheet> pageResult = this.timesheetService.getAllTimesheets(username, formattedStartDate,
+				formattedEndDate, project, pageRequest);
 		return new PagedModel<>(pageResult);
-		
+
 	}
 
 	@GetMapping("/jpa/users/{username}/timesheets/{id}")
@@ -78,6 +99,8 @@ public class TimesheetJpaResource {
 		timesheetDTO.setId(timesheet.getId());
 		timesheetDTO.setProject(timesheet.getProject());
 		timesheetDTO.setLoginDate(timesheet.getLoginDate());
+		timesheetDTO.setFromTime(timesheet.getFromTime());
+		timesheetDTO.setToTime(timesheet.getToTime());
 		timesheetDTO.setLoggedHr(timesheet.getLoggedHr());
 		timesheetDTO.setUsername(timesheet.getUsername());
 		return timesheetDTO;
@@ -94,13 +117,17 @@ public class TimesheetJpaResource {
 			@RequestBody TimesheetDTO timesheetDTO) {
 
 		Timesheet updatedTimesheet = this.timesheetService.updateTimesheet(id, username, timesheetDTO.getProject(),
-				timesheetDTO.getLoginDate(), timesheetDTO.getLoggedHr());
+				timesheetDTO.getLoginDate(), timesheetDTO.getFromTime(), timesheetDTO.getToTime(),
+				timesheetDTO.getLoggedHr());
 
 		return new ResponseEntity<Timesheet>(updatedTimesheet, HttpStatus.OK);
 	}
 
 	@PostMapping("/jpa/users/{username}/timesheets")
 	public ResponseEntity<Void> createTimesheet(@PathVariable String username, @RequestBody TimesheetDTO timesheetDTO) {
+
+		System.out.println("from Time " + timesheetDTO.getFromTime());
+		System.out.println("to Time " + timesheetDTO.getToTime());
 
 		timesheetDTO.setUsername(username);
 		Timesheet createdTimesheet = this.timesheetService.createNew(timesheetDTO);

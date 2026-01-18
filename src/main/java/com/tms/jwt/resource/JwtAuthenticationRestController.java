@@ -1,9 +1,7 @@
 package com.tms.jwt.resource;
 
 import java.util.Objects;
-
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.tms.jwt.JwtTokenUtil;
 import com.tms.jwt.JwtUserDetails;
 
@@ -42,18 +39,12 @@ public class JwtAuthenticationRestController {
 	@Autowired
 	private UserDetailsService jwtUserDetailsService;
 	
-	//@Autowired
-	//private EmailService emailService;
-
 	@RequestMapping(value = "${jwt.get.token.uri}", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenRequest authenticationRequest)
 			throws AuthenticationException {
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
-		//send email
-		//this.emailService.sendSimpleMessage();
-		
 		final UserDetails userDetails = jwtUserDetailsService
 				.loadUserByUsername(authenticationRequest.getUsername());
 
@@ -68,8 +59,6 @@ public class JwtAuthenticationRestController {
 		final String token = authToken.substring(7);
 		String username = jwtTokenUtil.getUsernameFromToken(token);
 		JwtUserDetails user = (JwtUserDetails) jwtUserDetailsService.loadUserByUsername(username);
-
-		//UserDetails user = jwtUserDetailsService.loadUserByUsername(username);
 
 		if (jwtTokenUtil.canTokenBeRefreshed(token)) {
 			String refreshedToken = jwtTokenUtil.refreshToken(token);

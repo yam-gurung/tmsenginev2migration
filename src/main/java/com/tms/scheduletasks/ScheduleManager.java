@@ -1,12 +1,10 @@
 package com.tms.scheduletasks;
 import org.springframework.stereotype.Component;
-
 import com.tms.model.RoleDTO;
 import com.tms.model.Timesheet;
 import com.tms.roles.RoleService;
-import com.tms.service.ExcelFileService;
 import com.tms.service.FileService;
-import com.tms.timesheet.TimesheetService;
+import com.tms.timesheet.TimesheetServiceImpl;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,17 +12,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.io.FileReader;
 import java.io.BufferedReader;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
+import com.tms.service.UserService;
+import com.tms.user.SecurityUser;
 
 @Component
 public class ScheduleManager {
 	
-	private TimesheetService timesheetService;
+	private TimesheetServiceImpl timesheetService;
 	private FileService excelFileService;
 	private RoleService roleService;
+	private UserService userService;
 	
 	@Value("${report.target.path}")
 	private String targetFileLocation;
@@ -33,12 +33,14 @@ public class ScheduleManager {
 	private String sourceRoleFileLocation;
 	
 	@Autowired
-	public ScheduleManager(TimesheetService timesheetService,
+	public ScheduleManager(TimesheetServiceImpl timesheetService,
 			FileService excelFileService,
-			RoleService roleService) {
+			RoleService roleService,
+			UserService userService) {
 		this.timesheetService = timesheetService;
 		this.excelFileService = excelFileService;
 		this.roleService = roleService;
+		this.userService = userService;
 	}
 	
 	@Scheduled(cron="${timesheet.time.reminder.cron}")
@@ -51,7 +53,12 @@ public class ScheduleManager {
 	public void generateDailyTimesheetReport() throws FileNotFoundException, IOException {
 		List<Timesheet> timesheets=this.timesheetService.getAllTimesheets();
 		this.excelFileService.
-		createAndSaveTimesheetReportExcelFile(targetFileLocation, timesheets);
+		generateAndSaveTimesheetReportExcelFile(targetFileLocation, timesheets);
+	}
+	
+	public void generateDailyUserReport() throws FileNotFoundException,IOException {
+		List<SecurityUser> users=this.userService.getAllUsers();
+		this.excelFileService.generateAndSaveUserReportExcelFile(targetFileLocation, users);
 	}
 	
 	@Scheduled(cron="${rolesfile.read.time.cron}")

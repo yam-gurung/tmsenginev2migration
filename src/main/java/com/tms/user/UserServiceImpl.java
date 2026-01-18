@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.tms.service.UserService;
 
@@ -21,10 +22,12 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	@PreAuthorize("hasRole('ADMIN')")
 	public Page<SecurityUser> getAllUsers(PageRequest pageRequest) {
 		return this.userRepository.findAll(pageRequest);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	public List<SecurityUser> getAllUsers(){
 		return this.userRepository.findAll();
 	}
@@ -33,14 +36,12 @@ public class UserServiceImpl implements UserService {
 		return this.userRepository.findByUsername(username).get();
 	}
 
+	
 	public SecurityUser getUser(Long id) {
 		return this.userRepository.findById(id).get();
 	}
 
-	/*public User createNew(User aUser) {
-		return this.userJpaRepository.save(aUser);
-	}*/
-
+	@PreAuthorize("hasRole('ADMIN')")
 	public SecurityUser addUser(SecurityUserDto securityUserDto) {
 		Optional<Role> role = roleRepository.findByRoleName(securityUserDto.getRolename());
 
@@ -49,6 +50,7 @@ public class UserServiceImpl implements UserService {
 				securityUserDto.getLastname()));
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	public SecurityUser updateUser(Long id, String username, String password) {
 		SecurityUser updateUser = this.userRepository.findById(id).get();
 		updateUser.setUsername(username);
@@ -57,6 +59,7 @@ public class UserServiceImpl implements UserService {
 		return this.userRepository.save(updateUser);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	public void deleteUser(Long id) {
 		this.userRepository.deleteById(id);
 	}

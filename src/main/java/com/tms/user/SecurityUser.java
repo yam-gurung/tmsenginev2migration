@@ -8,13 +8,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "security_user")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class SecurityUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    public SecurityUser(String username, String password, Role role, String firstName, String lastName) {
+    public SecurityUser(String username, String password, Role role,String firstName,String lastName) {
         this.username = username;
         this.password = password;
         this.roles = Arrays.asList(role);
